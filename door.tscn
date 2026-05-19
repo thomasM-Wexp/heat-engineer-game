@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://edny0xnsfjdt"]
+
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_ba8gm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ba8gm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0phs7"]
+size = Vector2(38, 102)
+
+[node name="door" type="Node2D" unique_id=21647770]
+
+[node name="frame" type="StaticBody2D" parent="." unique_id=582364757]
+
+[node name="frame_collision" type="CollisionShape2D" parent="frame" unique_id=2108447082]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_ba8gm")
+
+[node name="door" type="RigidBody2D" parent="." unique_id=2042174946]
+angular_damp = 2.0
+
+[node name="door_sprite" type="Sprite2D" parent="door" unique_id=1911704013]
+position = Vector2(-1, 61)
+scale = Vector2(0.3, 0.8)
+texture = ExtResource("1_ba8gm")
+
+[node name="door_collision" type="CollisionShape2D" parent="door" unique_id=208003333]
+position = Vector2(-1, 61)
+shape = SubResource("RectangleShape2D_0phs7")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=1165838909]
+position = Vector2(0, -3)
+node_a = NodePath("../frame")
+node_b = NodePath("../door")
+bias = 0.1
+disable_collision = false
+angular_limit_enabled = true
+angular_limit_lower = -1.5707964
+angular_limit_upper = 1.5707964
