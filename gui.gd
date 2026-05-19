@@ -3,10 +3,10 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$stop_game.hide()
 
 func on_timeout() -> void:
-	print("aaa")
+	Var.pause = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta) -> void:
@@ -18,7 +18,15 @@ func _on_new_level() -> void:
 	Var.level_timer.name = 'bob'
 	Var.level_timer.wait_time = Var.time - Var.difficulty
 	Var.level_timer.one_shot = true
-	Var.level_timer.timeout.connect(on_timeout)
+	
 	if !get_node('bob'):
 		add_child(Var.level_timer)
+		Var.level_timer.timeout.connect(on_timeout)
 	Var.level_timer.start()
+
+func _unhandled_input(_event) -> void:
+	if Input.is_action_just_pressed('menu'):
+		$stop_game.visible = !$stop_game.visible
+		if get_node('bob') and get_node('bob').time_left > 0.9:
+			get_node('bob').paused = !get_node('bob').paused
+		get_tree().paused = !get_tree().paused

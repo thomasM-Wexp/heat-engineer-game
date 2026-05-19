@@ -11,10 +11,12 @@ func _physics_process(_delta) -> void:
 		new_room()
 
 func new_room() -> void:
+	Var.pause = false
 	Var.new_level = false
 	get_tree().call_group("rooms", "on_load")
 	var room = Var.rng.randi_range(1, Var.room_number)
-	$player.position = Vector2(0,0)
+	$player.position = Var.spawns[room-1]
+	$heater.position += Vector2(100,0)
 	if room == 1:
 		$"test-room-1".show()
 	else:

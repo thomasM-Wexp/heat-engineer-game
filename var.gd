@@ -4,6 +4,8 @@ extends Node
 var room_number = 2
 var rng = RandomNumberGenerator.new()
 var new_level = false
+var pause = false
+var spawns = [Vector2(-4200,100),Vector2(0,0)]
 
 #for player
 var SPEED = 700.0
