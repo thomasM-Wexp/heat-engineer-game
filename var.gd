@@ -5,10 +5,11 @@ var room_number = 5
 var rng = RandomNumberGenerator.new()
 var new_level = false
 var pause = false
-var spawns = [Vector2(-4200,100),Vector2(0,0),Vector2(-2750,2900),Vector2(-2000,1400),Vector2(900,3000)]
+var spawns = [Vector2(-3350,-300),Vector2(0,0),Vector2(-2750,2900),Vector2(-2000,1400),Vector2(900,3000)]
 var base = [Vector2(-3750,500),Vector2(1000,0),Vector2(-2900,2950),Vector2(-2000,1400),Vector2(500,2900)]
 var cats = [[5,Vector2(750,2325),deg_to_rad(90)],[5,Vector2(1500,2150),deg_to_rad(180)]]#room, position, rotation
 var birds = [[4,Vector2(-2600,1700)]]
+var dogs = [[1,[Vector2(-4200,-50),Vector2(-4200,300),Vector2(-4000,450),Vector2(-4000,-50),Vector2(-4200,-50)]]]#room, list of points to go to
 #for player
 var SPEED = 700.0
 var active_SPEED = SPEED
