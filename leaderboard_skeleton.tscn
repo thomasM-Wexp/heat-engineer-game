@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://vuga0ro1w6wa"]
+
+[ext_resource type="Script" uid="uid://bilgqe3beiksg" path="res://leaderboard_skeleton.gd" id="1_12r64"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_12r64"]
+
+[node name="Control" type="Control" unique_id=1245010648]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_12r64")
+metadata/_edit_group_ = true
+
+[node name="Panel" type="Panel" parent="." unique_id=81025844]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Panel" unique_id=417901328]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.05
+anchor_right = 0.7
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ColorRect" unique_id=898442097]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/ColorRect/VBoxContainer" unique_id=1847659406]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BoxContainer" type="VBoxContainer" parent="Panel/ColorRect/VBoxContainer/ScrollContainer" unique_id=1353585517]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer" unique_id=484599258]
+layout_mode = 2
+text = "LEADERBOARDS"
+label_settings = SubResource("LabelSettings_12r64")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer" unique_id=1081465162]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer" unique_id=1680490649]
+layout_mode = 2
+
+[node name="5easy_btn" type="Button" parent="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer" unique_id=1394719950]
+layout_mode = 2
+text = "5 Easy"
+
+[node name="10easy_btn" type="Button" parent="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer" unique_id=1873004388]
+layout_mode = 2
+text = "10 Easy"
+alignment = 0
+
+[node name="15easy_btn" type="Button" parent="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer" unique_id=1330065015]
+layout_mode = 2
+text = "15 Easy"
+
+[node name="endless" type="Button" parent="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer" unique_id=431365595]
+layout_mode = 2
+text = "Easy Endless"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer" unique_id=1614335254]
+layout_mode = 2
+
+[node name="5normal_btn" type="Button" parent="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer2" unique_id=2057641418]
+layout_mode = 2
+text = "5 Normal"
+
+[node name="10normal_btn" type="Button" parent="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer2" unique_id=1849566680]
+layout_mode = 2
+text = "10 Normal"
+alignment = 0
+
+[node name="15normal_btn" type="Button" parent="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer2" unique_id=1268577164]
+layout_mode = 2
+text = "15 Normal"
+
+[node name="Normal Endless" type="Button" parent="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer2" unique_id=1756460083]
+layout_mode = 2
+text = "Easy Normal"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer" unique_id=2069114228]
+layout_mode = 2
+
+[node name="5hard_btn" type="Button" parent="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer3" unique_id=884345868]
+layout_mode = 2
+text = "5 Hard"
+
+[node name="10hard_btn" type="Button" parent="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer3" unique_id=1768145773]
+layout_mode = 2
+text = "10 Hard"
+
+[node name="15hard_btn" type="Button" parent="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer3" unique_id=854241246]
+layout_mode = 2
+text = "15 Hard"
+
+[node name="hard_endless" type="Button" parent="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer3" unique_id=751479901]
+layout_mode = 2
+text = "Hard Endless"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=46027442]
+
+[connection signal="pressed" from="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer/5easy_btn" to="." method="_on_5easy_btn_pressed"]
+[connection signal="pressed" from="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer/10easy_btn" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer/15easy_btn" to="." method="_on_15easy_btn_pressed"]
+[connection signal="pressed" from="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer/endless" to="." method="_on_endless_pressed"]
+[connection signal="pressed" from="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer2/5normal_btn" to="." method="_on_5normal_btn_pressed"]
+[connection signal="pressed" from="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer2/5normal_btn" to="." method="_on_5easy_btn_pressed"]
+[connection signal="pressed" from="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer2/10normal_btn" to="." method="_on_10normal_btn_pressed"]
+[connection signal="pressed" from="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer2/10normal_btn" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer2/15normal_btn" to="." method="_on_15normal_btn_pressed"]
+[connection signal="pressed" from="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer2/15normal_btn" to="." method="_on_15easy_btn_pressed"]
+[connection signal="pressed" from="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer2/Normal Endless" to="." method="_on_normal_endless_pressed"]
+[connection signal="pressed" from="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer2/Normal Endless" to="." method="_on_endless_pressed"]
+[connection signal="pressed" from="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer3/5hard_btn" to="." method="_on_5hard_btn_pressed"]
+[connection signal="pressed" from="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer3/10hard_btn" to="." method="_on_10hard_btn_pressed"]
+[connection signal="pressed" from="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer3/15hard_btn" to="." method="_on_15hard_btn_pressed"]
+[connection signal="pressed" from="Panel/ColorRect/VBoxContainer/ScrollContainer/BoxContainer/HBoxContainer3/hard_endless" to="." method="_on_hard_endless_pressed"]
