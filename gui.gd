@@ -3,7 +3,7 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$stop_game.hide()
+	$Control.hide()
 
 func on_timeout() -> void:
 	Var.pause = true
@@ -26,7 +26,7 @@ func _on_new_level() -> void:
 
 func _unhandled_input(_event) -> void:
 	if Input.is_action_just_pressed('menu'):
-		$stop_game.visible = !$stop_game.visible
+		$Control.visible = !$Control.visible
 		if get_node('bob') and get_node('bob').time_left > 0.9:
 			get_node('bob').paused = !get_node('bob').paused
 		get_tree().paused = !get_tree().paused

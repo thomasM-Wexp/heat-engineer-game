@@ -28,6 +28,7 @@ func _physics_process(delta: float) -> void:
 	if Var.pause == false:
 		look_at(get_global_mouse_position())
 		move_and_slide()
+		Var.player = self.position
 
 func _input(event):
 	if event.is_action_pressed("interact"):
