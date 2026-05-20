@@ -8,7 +8,9 @@
 [ext_resource type="Script" uid="uid://bn8od2cnqa5j1" path="res://var.gd" id="5_lquwl"]
 [ext_resource type="Script" uid="uid://di5d8xxejhia3" path="res://gui.gd" id="7_272bh"]
 [ext_resource type="Script" uid="uid://d2irrnlb4oird" path="res://heater.gd" id="8_5vw27"]
+[ext_resource type="PackedScene" path="res://leaderboard_skeleton.tscn" id="8_efxa6"]
 [ext_resource type="Script" uid="uid://cv6mw6r8ddbrn" path="res://cat_obstacle.gd" id="9_kek77"]
+[ext_resource type="Script" uid="uid://faefpqs0ts27" path="res://bird_obstacle.gd" id="10_4c57u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(63.5, 64.5)
@@ -22,6 +24,12 @@ size = Vector2(93, 20)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5vw27"]
 radius = 14.0
 height = 50.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_efxa6"]
+radius = 118.20744
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dg77c"]
+radius = 6.0
 
 [node name="Main" type="Node2D" unique_id=1105813633]
 script = ExtResource("1_1bvp3")
@@ -103,25 +111,11 @@ offset_right = 40.0
 offset_bottom = 23.0
 metadata/_edit_use_anchors_ = true
 
-[node name="stop_game" type="ColorRect" parent="GUI" unique_id=1136384921]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -221.0
-offset_top = -306.0
-offset_right = 260.0
-offset_bottom = 276.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 0.5058824, 0, 1)
-
-[node name="menu" type="Label" parent="GUI/stop_game" unique_id=1667707048]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "menu features to go here"
+[node name="Control" parent="GUI" unique_id=1245010648 instance=ExtResource("8_efxa6")]
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 1.0
+offset_bottom = 3.0
 
 [node name="heater" type="RigidBody2D" parent="." unique_id=1812916329]
 position = Vector2(-7, 85)
@@ -146,10 +140,14 @@ position = Vector2(0, -4.371139e-08)
 shape = SubResource("RectangleShape2D_4c57u")
 
 [node name="cat_obstacle" type="StaticBody2D" parent="." unique_id=1289053300]
+visible = false
 position = Vector2(702, -365)
 script = ExtResource("9_kek77")
 
 [node name="cat_sprite" type="Sprite2D" parent="cat_obstacle" unique_id=240410210]
+position = Vector2(3.8146973e-06, -0.5000038)
+scale = Vector2(0.21875006, 0.39843744)
+texture = ExtResource("1_ig7tw")
 
 [node name="cat_hitbox" type="CollisionShape2D" parent="cat_obstacle" unique_id=36966817]
 shape = SubResource("CapsuleShape2D_5vw27")
@@ -161,5 +159,27 @@ position = Vector2(-1, 13.000001)
 scale = Vector2(1, 1.2781863)
 polygon = PackedVector2Array(1, 11.735382, -23, 51, 28, 51)
 
+[node name="bird_obstacle" type="StaticBody2D" parent="." unique_id=819397172]
+visible = false
+position = Vector2(823, -364)
+script = ExtResource("10_4c57u")
+
+[node name="bird_domain" type="Area2D" parent="bird_obstacle" unique_id=1303432864]
+
+[node name="domain_collision" type="CollisionShape2D" parent="bird_obstacle/bird_domain" unique_id=1437184289]
+position = Vector2(56, 49)
+shape = SubResource("CircleShape2D_efxa6")
+
+[node name="bird_collision" type="CollisionShape2D" parent="bird_obstacle" unique_id=139325534]
+position = Vector2(-71.5, -22)
+shape = SubResource("CircleShape2D_dg77c")
+
+[node name="bird_sprite" type="Sprite2D" parent="bird_obstacle" unique_id=962770152]
+position = Vector2(-71.5, -22)
+scale = Vector2(0.0703125, 0.0625)
+texture = ExtResource("1_ig7tw")
+
 [connection signal="new_level" from="." to="GUI" method="_on_new_level"]
 [connection signal="body_entered" from="cat_obstacle/cats_eyes" to="cat_obstacle" method="_on_cat_entered"]
+[connection signal="body_entered" from="bird_obstacle/bird_domain" to="bird_obstacle" method="_on_domain_entered"]
+[connection signal="body_exited" from="bird_obstacle/bird_domain" to="bird_obstacle" method="_on_domain_exited"]
