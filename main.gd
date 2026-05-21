@@ -1,10 +1,11 @@
 extends Node2D
 
 signal new_level
+#wednesday goals:
+#ask about visuals
+#work on adding in dog obstacle
 
 #thursday goals:
-#!!FIX BUG WHERE OBSTACLES ARE NOT REMOVED AFTER ROOM SWITCH!!
-#add in updated speed system(update on any change, use active speed, change base speed for obstacles
 #add in heater aura's
 #add in more maps
 #add in difficulty scaling and difficulty ranking
@@ -20,24 +21,32 @@ func _process(_delta) -> void:
 		new_room()
 
 func new_room() -> void:
+	
+	for obj in get_tree().get_nodes_in_group("room_objects"):
+		obj.queue_free() #should clear everything in group when new rooms loads
+		
 	$player.drop()
 	Var.pause = false
 	Var.new_level = false
 	get_tree().call_group("rooms", "on_load")
 	var room = Var.rng.randi_range(1, Var.room_number)
+	room = 1
 	
 	for i in range(len(Var.cats)):
 		if room == Var.cats[i][0]:
 			var instance = $cat_obstacle.duplicate()
 			instance.position = Var.cats[i][1]
 			instance.rotation = Var.cats[i][2]
+			instance.add_to_group("room_objects")#add to group so it can be cleared
 			add_child(instance)
 			instance.show()
+			
 			
 	for i in range(len(Var.birds)):
 		if room == Var.birds[i][0]:
 			var instance = $bird_obstacle.duplicate()
 			instance.position = Var.birds[i][1]
+			instance.add_to_group("room_objects")#add to group so it can be cleared
 			add_child(instance)
 			instance.show()
 			
@@ -51,8 +60,10 @@ func new_room() -> void:
 			add_child(path)
 			var instance = $pathfinding/dog_walk.duplicate()
 			instance.position = Var.dogs[i][1][0]
+			path.add_to_group("room_objects")#add to group so it can be cleared
 			path.add_child(instance)
 			instance.show()
+			
 			
 			
 	$player.position = Var.spawns[room-1]
