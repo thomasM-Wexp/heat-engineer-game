@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://c6c1wl7u51pe5"]
+
+[ext_resource type="Script" uid="uid://bkvj4c2etq1hw" path="res://start_menu.gd" id="1_jwbto"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ia0g5"]
+font_size = 48
+
+[node name="Control" type="Control" unique_id=1244024469]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jwbto")
+
+[node name="Panel" type="Panel" parent="." unique_id=1165869708]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=528598687]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer" unique_id=1960102511]
+layout_mode = 2
+text = "START MENU"
+label_settings = SubResource("LabelSettings_ia0g5")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer" unique_id=514260895]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="Panel/VBoxContainer" unique_id=2146856317]
+layout_mode = 2
+size_flags_vertical = 0
+placeholder_text = "ENTER USERNAME"
+alignment = 1
+
+[node name="start_btn" type="Button" parent="Panel/VBoxContainer" unique_id=758410806]
+layout_mode = 2
+size_flags_vertical = 0
+text = "START"
+
+[node name="controls_btn" type="Button" parent="Panel/VBoxContainer" unique_id=365930823]
+layout_mode = 2
+text = "Controls"
+
+[node name="leaderboards_btn" type="Button" parent="Panel/VBoxContainer" unique_id=154488049]
+layout_mode = 2
+text = "Leaderboards"
+
+[node name="howtoplay_btn" type="Button" parent="Panel/VBoxContainer" unique_id=1778930023]
+layout_mode = 2
+text = "How To Play"
+
+[connection signal="pressed" from="Panel/VBoxContainer/start_btn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/controls_btn" to="." method="_on_controls_btn_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/leaderboards_btn" to="." method="_on_leaderboards_btn_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/howtoplay_btn" to="." method="_on_howtoplay_btn_pressed"]
