@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dqo0duda2ttb2"]
+
+[ext_resource type="Script" uid="uid://bbitvndp0crsq" path="res://how_to_play.gd" id="1_1ad62"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vdjym"]
+font_size = 48
+
+[node name="Control" type="Control" unique_id=1746128627]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1ad62")
+
+[node name="Panel" type="Panel" parent="." unique_id=340248779]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1992492844]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer" unique_id=741140836]
+layout_mode = 2
+text = "How To Play"
+label_settings = SubResource("LabelSettings_vdjym")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer" unique_id=484042465]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer" unique_id=547723482]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Objective of the Game
+
+placeholder
+placeholder
+placeholder
+placeholder
+placeholder"
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer" unique_id=1485329323]
+layout_mode = 2
+text = "GO BACK"
+
+[connection signal="pressed" from="Panel/VBoxContainer/Button" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Button" to="." method="_on_start_menu_pressed"]

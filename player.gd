@@ -38,10 +38,11 @@ func _input(event):
 			
 func grab():
 	var collider = interact_ray.get_collider()
-	if collider and collider.has_method("pick_up"):
+	if collider and collider.has_method("pick_up") and get_tree().get_nodes_in_group('heaters').size() < round((Var.max_heat / Var.heat_used)):
 		Var.held_item = Var.heater.instantiate()
 		get_tree().root.add_child(Var.held_item)
 		Var.held_item.pick_up(hold_position)
+		Var.held_item.add_to_group("heaters")
 
 func drop():
 	if Var.held_item:

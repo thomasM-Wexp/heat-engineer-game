@@ -12,6 +12,7 @@ var cats = [[5,Vector2(750,2325),deg_to_rad(90)],[5,Vector2(1500,2150),deg_to_ra
 var birds = [[4,Vector2(-2600,1700)]]
 var dogs = [[1,[Vector2(-4200,-50),Vector2(-4200,300),Vector2(-4000,450),Vector2(-4000,-50),Vector2(-4200,-50)]]]#room, list of points to go to
 #for player
+var username = ''
 var SPEED = 700.0
 var active_SPEED = SPEED
 var dash = 1.5
@@ -26,3 +27,11 @@ var held_item = null
 var catattack = Timer.new()
 var bird_hunt = false
 var player = 0
+
+#points
+var base_cost = 0.26
+var solar_discount = 0.00
+var efficiency = 300.00
+var efficiency_upgrades = [350,400,450,500]
+var max_heat = 1000
+var heat_used = 100

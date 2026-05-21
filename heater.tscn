@@ -9,6 +9,9 @@ size = Vector2(87, 11)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
 size = Vector2(93, 20)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ahmpi"]
+radius = 159.28905
+
 [node name="heater" type="RigidBody2D" unique_id=587879860]
 rotation = 1.5707964
 collision_layer = 2147483648
@@ -29,3 +32,8 @@ shape = SubResource("RectangleShape2D_kek77")
 [node name="heater_collision" type="CollisionShape2D" parent="." unique_id=2105056492]
 position = Vector2(0, -4.371139e-08)
 shape = SubResource("RectangleShape2D_4c57u")
+
+[node name="heater_aura" type="Area2D" parent="." unique_id=2090576421]
+
+[node name="aura" type="CollisionShape2D" parent="heater_aura" unique_id=1429334561]
+shape = SubResource("CircleShape2D_ahmpi")
