@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cxidi2dxy2oes"]
+
+[ext_resource type="Script" uid="uid://d2irrnlb4oird" path="res://heater.gd" id="1_ahmpi"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_ke8mg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kek77"]
+size = Vector2(87, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
+size = Vector2(93, 20)
+
+[node name="heater" type="RigidBody2D" unique_id=587879860]
+rotation = 1.5707964
+collision_layer = 2147483648
+collision_mask = 2147483648
+gravity_scale = 0.0
+script = ExtResource("1_ahmpi")
+
+[node name="heater_sprite" type="Sprite2D" parent="." unique_id=55822798]
+position = Vector2(7.6293945e-06, 7.6293945e-06)
+scale = Vector2(0.7449641, 0.1590909)
+texture = ExtResource("2_ke8mg")
+
+[node name="heater_pickup" type="Area2D" parent="." unique_id=545727767]
+
+[node name="pickup_collision" type="CollisionShape2D" parent="heater_pickup" unique_id=64665439]
+shape = SubResource("RectangleShape2D_kek77")
+
+[node name="heater_collision" type="CollisionShape2D" parent="." unique_id=2105056492]
+position = Vector2(0, -4.371139e-08)
+shape = SubResource("RectangleShape2D_4c57u")
