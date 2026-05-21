@@ -1,11 +1,10 @@
 extends Node2D
 
 signal new_level
-#wednesday goals:
-#ask about visuals
-#work on adding in dog obstacle
 
 #thursday goals:
+#!!FIX BUG WHERE OBSTACLES ARE NOT REMOVED AFTER ROOM SWITCH!!
+#add in updated speed system(update on any change, use active speed, change base speed for obstacles
 #add in heater aura's
 #add in more maps
 #add in difficulty scaling and difficulty ranking
@@ -26,7 +25,6 @@ func new_room() -> void:
 	Var.new_level = false
 	get_tree().call_group("rooms", "on_load")
 	var room = Var.rng.randi_range(1, Var.room_number)
-	room = 1
 	
 	for i in range(len(Var.cats)):
 		if room == Var.cats[i][0]:

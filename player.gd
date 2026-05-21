@@ -6,7 +6,6 @@ const ACCELLERATION = 2100.0
 const DRAG = 2100.0
 @onready var hold_position = $hands
 @onready var interact_ray = $grabber
-var held_item = null
 
 
 
@@ -32,7 +31,7 @@ func _physics_process(delta: float) -> void:
 
 func _input(event):
 	if event.is_action_pressed("interact"):
-		if held_item:
+		if Var.held_item:
 			drop()
 		else:
 			grab()
@@ -40,10 +39,11 @@ func _input(event):
 func grab():
 	var collider = interact_ray.get_collider()
 	if collider and collider.has_method("pick_up"):
-		held_item = collider
-		held_item.pick_up(hold_position)
+		Var.held_item = Var.heater.instantiate()
+		get_tree().root.add_child(Var.held_item)
+		Var.held_item.pick_up(hold_position)
 
 func drop():
-	if held_item:
-		held_item.drop(global_position + Vector2(20, 0), get_tree().current_scene)
-		held_item = null
+	if Var.held_item:
+		Var.held_item.drop(global_position, get_tree().current_scene)
+		Var.held_item = null
