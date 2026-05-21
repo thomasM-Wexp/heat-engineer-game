@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://faefpqs0ts27" path="res://bird_obstacle.gd" id="10_4c57u"]
 [ext_resource type="Script" uid="uid://b0lj0nxvwwg48" path="res://dog_walk.gd" id="12_dg77c"]
 [ext_resource type="PackedScene" uid="uid://cxidi2dxy2oes" path="res://heater.tscn" id="12_ycdy4"]
+[ext_resource type="PackedScene" uid="uid://b58t80ws2jqn8" path="res://start_menu.tscn" id="13_ycdy4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(63.5, 64.5)
@@ -58,7 +59,7 @@ shape = SubResource("RectangleShape2D_0xm2m")
 position_smoothing_enabled = true
 
 [node name="hands" type="Marker2D" parent="player" unique_id=1316127599]
-position = Vector2(58, 0)
+position = Vector2(34, 0)
 
 [node name="grabber" type="RayCast2D" parent="player" unique_id=541992876]
 target_position = Vector2(93, 0)
@@ -110,6 +111,7 @@ scale = Vector2(3, 3)
 text = "HIGH SCORE: 0
 POINTS: 0"
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="time" type="Label" parent="GUI" unique_id=1424657912]
 offset_right = 40.0
@@ -188,6 +190,9 @@ texture = ExtResource("1_ig7tw")
 shape = SubResource("CapsuleShape2D_w48qg")
 
 [node name="heater" parent="." unique_id=587879860 instance=ExtResource("12_ycdy4")]
+
+[node name="Control" parent="." unique_id=1244024469 instance=ExtResource("13_ycdy4")]
+visible = false
 
 [connection signal="new_level" from="." to="GUI" method="_on_new_level"]
 [connection signal="body_entered" from="cat_obstacle/cats_eyes" to="cat_obstacle" method="_on_cat_entered"]
