@@ -1,13 +1,18 @@
 [gd_scene format=3 uid="uid://cib0rcjst7l30"]
 
-[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_24kvk"]
+[ext_resource type="Texture2D" uid="uid://b4juv0hkqi610" path="res://art/Tilesheets/pixelinterior_LRK_v1.1/doorswindowsstairs_LRK.png" id="1_24kvk"]
 [ext_resource type="Script" uid="uid://bq0qd7jm4hlsv" path="res://exit.gd" id="2_mlcv5"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_24kvk"]
+atlas = ExtResource("1_24kvk")
+region = Rect2(17, 16, 30, 48)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pinn1"]
-size = Vector2(128, 128)
+size = Vector2(30, 49)
 
 [node name="exit" type="Sprite2D" unique_id=1261713501]
-texture = ExtResource("1_24kvk")
+texture = SubResource("AtlasTexture_24kvk")
+offset = Vector2(8, 0)
 script = ExtResource("2_mlcv5")
 
 [node name="exit_collision" type="Area2D" parent="." unique_id=1640544682]
@@ -15,6 +20,7 @@ collision_layer = 255
 collision_mask = 255
 
 [node name="exit_sprite" type="CollisionShape2D" parent="exit_collision" unique_id=1030029752]
+position = Vector2(8, -0.5)
 shape = SubResource("RectangleShape2D_pinn1")
 
 [connection signal="body_entered" from="exit_collision" to="." method="_on_exit_collision_body_entered"]
